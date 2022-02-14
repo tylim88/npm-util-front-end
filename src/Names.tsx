@@ -158,7 +158,8 @@ export const Names = () => {
 				<Typography marginBottom={2} paragraph>
 					Filters are preload with random examples. Multiple filters per
 					character is possible, separate them with ",". Request will be
-					rejected if result set exceed 10k, if so please reduce the range.
+					rejected if result set exceed 10k, if so please reduce the range. Name
+					list updates on every hour.
 				</Typography>
 			</Grid>
 			{errMsg || data.length === 0 ? (
