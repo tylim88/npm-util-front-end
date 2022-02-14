@@ -155,7 +155,7 @@ export const ResponsiveAppBar = () => {
 									marginLeft: 100,
 								}}
 							>
-								<GitHubIcon fontSize="large" color={'action'} />
+								<GitHubIcon fontSize="large" />
 							</LinkMUI>
 						</Grid>
 					</Box>
