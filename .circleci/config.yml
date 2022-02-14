@@ -33,7 +33,7 @@ jobs:
       - run: npm run lint
 
       - run: npm run build
-
+# https://codeburst.io/how-to-deploy-on-firebase-hosting-with-circleci-f5fa58bce01d
       - run: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting
 
       - save_cache:
