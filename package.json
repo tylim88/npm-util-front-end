@@ -9,7 +9,7 @@
 		"prettier": "npx pretty-quick --staged",
 		"pre-commit": "npm run tsc && npm run lint --fix && npm run prettier",
 		"start": "env-cmd -f .config/dev.env react-scripts start",
-		"build": "env-cmd -f .config/prod.env react-scripts build",
+		"build": "rm -rf build && react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
