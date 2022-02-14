@@ -70,6 +70,7 @@ export const FilterTextField = ({
 		setValue(value)
 		const { pass, filters } = status(value)
 		onStateChange && onStateChange(pass, filters)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []) // dont include onStateChange as dependency as this is intend to run once
 	return (
 		<TextField

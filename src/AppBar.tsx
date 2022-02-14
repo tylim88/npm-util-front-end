@@ -18,7 +18,6 @@ import { Link } from 'react-router-dom'
 import MilitaryTechIcon from '@mui/icons-material/MilitaryTech'
 import BadgeIcon from '@mui/icons-material/Badge'
 import GitHubIcon from '@mui/icons-material/GitHub'
-import { red, blue } from '@mui/material/colors'
 
 const pages = [
 	{ name: 'Unused Names', link: '/', Icon: BadgeIcon },
