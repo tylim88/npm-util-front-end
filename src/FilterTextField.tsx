@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import TextField, { TextFieldProps } from '@mui/material/TextField'
+import { TextField, TextFieldProps } from '@mui/material'
 import { filtersRegex } from './share'
 import pickRandom from 'pick-random'
 

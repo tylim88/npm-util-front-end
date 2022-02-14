@@ -7,15 +7,6 @@ module.exports = {
 		'plugin:prettier/recommended',
 	],
 	rules: {
-		'spaced-comment': ['error', 'always'],
-		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'@typescript-eslint/no-explicit-any': 'error',
-		'react/self-closing-comp': [
-			'error',
-			{
-				component: true,
-				html: true,
-			},
-		],
 	},
 }

@@ -1,26 +1,17 @@
 import React, { useState } from 'react'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import TextField from '@mui/material/TextField'
-import Grid from '@mui/material/Grid'
+import { Box, Toolbar, TextField, Grid, Typography, Link } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { FilterTable } from './FilterTable'
 import { FilterTextField } from './FilterTextField'
-import Typography from '@mui/material/Typography'
-import LoadingButton from '@mui/lab/LoadingButton'
+import { LoadingButton } from '@mui/lab'
 import axios from 'axios'
 import { availableNameShape } from './share'
 import { z } from 'zod'
-import Link from '@mui/material/Link'
 import SearchIcon from '@mui/icons-material/Search'
 import { red } from '@mui/material/colors'
 
 const defaultLength = 3
 const maxChar = 6
-
-const StyledGrid = styled(Grid)(({ theme }) => ({
-	backgroundColor: theme.palette.action.hover,
-}))
 
 const StyledGrid2 = styled(Grid)(({ theme }) => ({
 	'&:nth-of-type(odd)': {
@@ -35,16 +26,17 @@ export const Names = () => {
 	>({})
 	const [loading, setLoading] = useState(false)
 	const [errMsg, setErrMsg] = useState('')
+	const [searched, setSearched] = useState(false)
 
 	return (
-		<Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+		<Box>
 			<Toolbar />
 			<Typography variant="h5" marginBottom={5} textAlign="center">
-				Search For Available <Link href="https://www.npmjs.com/">NPMjs</Link>{' '}
-				Name
+				Search For Unused <Link href="https://www.npmjs.com/">NPMjs</Link>{' '}
+				Package Names
 			</Typography>
 			<Grid container justifyContent="center">
-				<Grid item xs={12} lg={8}>
+				<Grid item xs={10} lg={8}>
 					<FilterTable />
 				</Grid>
 			</Grid>
@@ -54,11 +46,12 @@ export const Names = () => {
 				alignItems={'center'}
 				marginTop={3}
 			>
-				<StyledGrid item>
+				<Grid item>
 					<TextField
 						id="outlined-number"
 						type="number"
 						label="Length"
+						variant="filled"
 						sx={{ marginTop: 3, marginBottom: 2, marginX: 5 }}
 						value={length}
 						onChange={e => {
@@ -90,12 +83,12 @@ export const Names = () => {
 							shrink: true,
 						}}
 					/>
-				</StyledGrid>
+				</Grid>
 				<Grid item marginX={3}>
 					<LoadingButton
 						loading={loading}
 						loadingPosition="end"
-						endIcon={<SearchIcon />}
+						endIcon={<SearchIcon fontSize="large" />}
 						variant="contained"
 						onClick={async () => {
 							setLoading(true)
@@ -124,10 +117,11 @@ export const Names = () => {
 										setData([])
 										setErrMsg(err?.response?.data?.error || 'unknown error')
 									}))
+							setSearched(true)
 							setLoading(false)
 						}}
 					>
-						Search Names
+						{loading ? 'loading...' : 'Search Names'}
 					</LoadingButton>
 				</Grid>
 			</Grid>
@@ -142,7 +136,6 @@ export const Names = () => {
 								md={3}
 								lg={2}
 								key={index}
-								justifyContent="center"
 								display={'flex'}
 								padding={1}
 							>
@@ -163,18 +156,20 @@ export const Names = () => {
 			</Grid>
 			<Grid container justifyContent="center">
 				<Typography marginBottom={2} paragraph>
-					Filters are preload with random example. Multiple filters per
+					Filters are preload with random examples. Multiple filters per
 					character is possible, separate them with ",". Request will be
 					rejected if result set exceed 10k, if so please reduce the range.
 				</Typography>
 			</Grid>
-			<Grid container justifyContent="center">
-				{errMsg ? (
+			{errMsg || data.length === 0 ? (
+				<Grid container justifyContent="center">
 					<Typography paragraph marginTop={2} color={red[500]}>
-						Error: {errMsg}
+						{errMsg ? `Error: ${errMsg}` : searched ? 'no data' : ''}
 					</Typography>
-				) : (
-					<Grid container justifyContent="flex-start" maxWidth={1440}>
+				</Grid>
+			) : (
+				<Grid container justifyContent="center">
+					<Grid container justifyContent="center" maxWidth={1440}>
 						{data.map(name => {
 							return (
 								<StyledGrid2 item key={name} xs={4}>
@@ -191,8 +186,8 @@ export const Names = () => {
 							)
 						})}
 					</Grid>
-				)}
-			</Grid>
+				</Grid>
+			)}
 			<Grid />
 		</Box>
 	)
