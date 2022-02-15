@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Box, Toolbar, TextField, Grid, Typography, Link } from '@mui/material'
+import { TextField, Grid, Typography, Link } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { FilterTable } from './FilterTable'
 import { FilterTextField } from './FilterTextField'
@@ -29,8 +29,7 @@ export const Names = () => {
 	const [searched, setSearched] = useState(false)
 
 	return (
-		<Box>
-			<Toolbar />
+		<>
 			<Typography variant="h5" marginBottom={5} textAlign="center">
 				Search For Unused <Link href="https://www.npmjs.com/">NPMjs</Link>{' '}
 				Package Names
@@ -45,14 +44,33 @@ export const Names = () => {
 				justifyContent="center"
 				alignItems={'center'}
 				marginTop={3}
+				direction="row"
 			>
-				<Grid item>
+				<Grid item xs={12} lg={4}>
+					<Typography paragraph>
+						1. Filters are preload with random examples.
+					</Typography>
+					<Typography paragraph>
+						2. Multiple filters per character is possible, separate them with
+						",". Request will be rejected if result set exceed 10k, if so please
+						reduce the range. Name list updates on every hour.
+					</Typography>
+					<Typography paragraph>
+						3. Request will be rejected if result set exceed 10k, if so please
+						reduce the range. Name list updates on every hour.
+					</Typography>
+					<Typography paragraph>
+						4. Name list updates at every GMT hour 0 minutes.
+					</Typography>
+					<Typography paragraph>5. Does not check for similar name.</Typography>
+				</Grid>
+				<Grid item xs={6} lg={2} display="flex" justifyContent={'flex-end'}>
 					<TextField
 						id="outlined-number"
 						type="number"
 						label="Length"
 						variant="filled"
-						sx={{ marginTop: 3, marginBottom: 2, marginX: 5 }}
+						sx={{ marginX: 5 }}
 						value={length}
 						onChange={e => {
 							const value = e.target.value
@@ -84,7 +102,7 @@ export const Names = () => {
 						}}
 					/>
 				</Grid>
-				<Grid item marginX={3}>
+				<Grid item lg={2} xs={6}>
 					<LoadingButton
 						loading={loading}
 						loadingPosition="end"
@@ -154,18 +172,10 @@ export const Names = () => {
 					})}
 				</Grid>
 			</Grid>
-			<Grid container justifyContent="center">
-				<Typography marginBottom={2} paragraph>
-					Filters are preload with random examples. Multiple filters per
-					character is possible, separate them with ",". Request will be
-					rejected if result set exceed 10k, if so please reduce the range. Name
-					list updates on every hour.
-				</Typography>
-			</Grid>
 			{errMsg || data.length === 0 ? (
 				<Grid container justifyContent="center">
 					<Typography paragraph marginTop={2} color={red[500]}>
-						{errMsg ? `Error: ${errMsg}` : searched ? 'no data' : ''}
+						{errMsg ? `Error: ${errMsg}` : searched ? 'no unused name' : ''}
 					</Typography>
 				</Grid>
 			) : (
@@ -190,6 +200,6 @@ export const Names = () => {
 				</Grid>
 			)}
 			<Grid />
-		</Box>
+		</>
 	)
 }

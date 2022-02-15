@@ -1,13 +1,5 @@
 import React, { useState, useRef } from 'react'
-import {
-	Typography,
-	Grid,
-	Toolbar,
-	Link,
-	TextField,
-	Alert,
-	Button,
-} from '@mui/material'
+import { Typography, Grid, Link, TextField, Alert, Button } from '@mui/material'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 const src = (packageName: string) =>
@@ -33,7 +25,6 @@ export const Badge = () => {
 	const [mouseEnter, setMouseEnter] = useState(false)
 	return (
 		<>
-			<Toolbar />
 			<Typography variant="h5" textAlign="center">
 				Dependency Count Badge
 			</Typography>
@@ -86,6 +77,7 @@ export const Badge = () => {
 					direction={'row'}
 					alignItems="center"
 					justifyContent="center"
+					marginY={2}
 				>
 					<Grid item xs={6} display="flex" justifyContent="flex-end">
 						<Typography paragraph marginY="auto">
