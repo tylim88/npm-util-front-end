@@ -57,12 +57,16 @@ export const Names = () => {
 					</Typography>
 					<Typography paragraph>
 						3. Request will be rejected if result set exceed 10k, if so please
-						reduce the range. Name list updates on every hour.
+						reduce the range.
 					</Typography>
 					<Typography paragraph>
 						4. Name list updates at every GMT hour 0 minutes.
 					</Typography>
 					<Typography paragraph>5. Does not check for similar name.</Typography>
+					<Typography paragraph>6. Max name length is 6.</Typography>
+					<Typography paragraph>
+						7. You can only make 100 request per 15 minutes.
+					</Typography>
 				</Grid>
 				<Grid item xs={6} lg={2} display="flex" justifyContent={'flex-end'}>
 					<TextField
