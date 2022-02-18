@@ -5,7 +5,7 @@ import { FilterTable } from './FilterTable'
 import { FilterTextField } from './FilterTextField'
 import { LoadingButton } from '@mui/lab'
 import axios from 'axios'
-import { availableNameShape } from './share'
+import { availableNameShape, availableNameLimit } from './share'
 import { z } from 'zod'
 import SearchIcon from '@mui/icons-material/Search'
 import { red } from '@mui/material/colors'
@@ -56,14 +56,14 @@ export const Names = () => {
 						reduce the range. Name list updates on every hour.
 					</Typography>
 					<Typography paragraph>
-						3. Request will be rejected if result set exceed 10k, if so please
-						reduce the range.
+						3. Request will be rejected if result set exceed{' '}
+						{availableNameLimit}, if so please reduce the range.
 					</Typography>
 					<Typography paragraph>
 						4. Name list updates at every GMT hour 0 minutes.
 					</Typography>
 					<Typography paragraph>5. Does not check for similar name.</Typography>
-					<Typography paragraph>6. Max name length is 6.</Typography>
+					<Typography paragraph>6. Max name length is 10.</Typography>
 					<Typography paragraph>
 						7. You can only make 100 request per 15 minutes.
 					</Typography>
