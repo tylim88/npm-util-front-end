@@ -11,7 +11,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import { red } from '@mui/material/colors'
 
 const defaultLength = 3
-const maxChar = 6
+const maxChar = 10
 
 const StyledGrid2 = styled(Grid)(({ theme }) => ({
 	'&:nth-of-type(odd)': {
