@@ -59,7 +59,7 @@ export const FilterTextField = ({
 	const [value, setValue] = useState('')
 	const [error, setError] = useState(false)
 	const status = (value: string) => {
-		const filters = value.split(',')
+		const filters = value.split(',').map(filter => filter.trim())
 		const pass = filters.some(item => {
 			return filtersRegex.test(item)
 		})
