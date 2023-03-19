@@ -1,5 +1,13 @@
 import React, { useState } from 'react'
-import { TextField, Grid, Typography, Link } from '@mui/material'
+import {
+	TextField,
+	Grid,
+	Typography,
+	Link,
+	Checkbox,
+	FormControlLabel,
+	FormGroup,
+} from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { FilterTable } from './FilterTable'
 import { FilterTextField } from './FilterTextField'
@@ -27,6 +35,7 @@ export const Names = () => {
 	const [loading, setLoading] = useState(false)
 	const [errMsg, setErrMsg] = useState('')
 	const [searched, setSearched] = useState(false)
+	const [isOrg, setIsOrg] = useState(false)
 
 	return (
 		<>
@@ -128,6 +137,7 @@ export const Names = () => {
 								(await axios
 									.post(process.env.REACT_APP_NAME_END_POINT, {
 										filters: filters_,
+										isOrg,
 									})
 									.then(res => {
 										const data: z.infer<typeof availableNameShape.res> =
@@ -145,6 +155,19 @@ export const Names = () => {
 					>
 						{loading ? 'loading...' : 'Search Names'}
 					</LoadingButton>
+					<FormGroup>
+						<FormControlLabel
+							control={
+								<Checkbox
+									value={isOrg}
+									onClick={e => {
+										setIsOrg(state => !state)
+									}}
+								/>
+							}
+							label="is organization?"
+						/>
+					</FormGroup>
 				</Grid>
 			</Grid>
 			<Grid container justifyContent="center" marginTop={4}>
