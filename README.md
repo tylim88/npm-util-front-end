@@ -4,7 +4,7 @@
 
 Utility [website](https://npmutil.com) for open sourcerer to create NPMjs dependency count badge and search for unused package names.
 
-It is also able top search available organization name.
+It is also able to search for available organization name.
 
 This is an open source project.
 
