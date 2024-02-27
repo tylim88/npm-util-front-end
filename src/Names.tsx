@@ -43,6 +43,9 @@ export const Names = () => {
 				Search For Unused <Link href="https://www.npmjs.com/">NPMjs</Link>{' '}
 				Package Names
 			</Typography>
+			<Typography variant="h5" marginBottom={5} textAlign="center">
+				This website is currently not working!
+			</Typography>
 			<Grid container justifyContent="center">
 				<Grid item xs={10} lg={8}>
 					<FilterTable />
