@@ -8,6 +8,8 @@ It is also able to search for available organization names.
 
 This is an open source project.
 
+Update: the website is no longer running
+
 [backend repo](https://github.com/tylim88/npm-util)
 
 ## Search Unused Names
